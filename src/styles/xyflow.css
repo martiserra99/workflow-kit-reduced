@@ -1,0 +1,6 @@
+@import "@xyflow/react/dist/style.css";
+
+.react-flow__handle {
+  opacity: 0;
+  z-index: -1;
+}

@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "./xyflow.css";
+
+@theme inline {
+  --font-sans: var(--font-nunito-sans), sans-serif;
+}

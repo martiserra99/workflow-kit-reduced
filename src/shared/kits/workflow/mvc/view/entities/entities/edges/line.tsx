@@ -1,0 +1,42 @@
+import type { Edge, EdgeProps } from "@xyflow/react";
+
+import { BaseEdge } from "@xyflow/react";
+
+import { getSmoothStepPath } from "@/shared/lib/flow";
+
+export interface LineEntity {
+  type: "line";
+  data: { [key: string]: never };
+}
+
+export default function Line({
+  id,
+  sourceX,
+  sourceY,
+  targetX,
+  targetY,
+  style,
+}: EdgeProps<Edge<LineEntity["data"], LineEntity["type"]>>) {
+  const path = getSmoothStepPath({
+    sourceX,
+    sourceY,
+    targetX,
+    targetY,
+    offset: 16,
+    radius: 12,
+  });
+  return (
+    <>
+      <BaseEdge
+        id={id}
+        path={path}
+        style={{
+          ...style,
+          stroke: "var(--color-neutral-700",
+          strokeWidth: 1,
+          strokeOpacity: 1,
+        }}
+      />
+    </>
+  );
+}
