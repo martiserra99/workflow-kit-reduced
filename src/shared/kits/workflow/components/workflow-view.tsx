@@ -1,11 +1,11 @@
 import type { Workflow } from "../mvc/model/workflow";
 import type { OnWorkflowChange } from "../mvc/model/on-workflow-change";
 
-import type { TypedFlowChange } from "../mvc/view/types/flow-change";
+import type { TypedFlowsChange } from "../mvc/view/types/flows-change";
 
 import { useMemo, useCallback } from "react";
 
-import { FlowView } from "@/shared/lib/flow";
+import { FlowsView } from "@/shared/lib/flows";
 
 import { workflowView } from "../mvc/view/view";
 import { nodeTypes, edgeTypes } from "../mvc/view/entities";
@@ -21,23 +21,23 @@ export function WorkflowView({
   workflow,
   onWorkflowChange,
 }: WorkflowViewProps) {
-  const flow = useMemo(
+  const flows = useMemo(
     () => workflowView(workflow, onWorkflowChange),
     [workflow, onWorkflowChange],
   );
 
-  const onFlowChange = useCallback(
-    (changes: TypedFlowChange[]) => {
-      const array = toWorkflowChanges(changes, workflow, flow);
+  const onFlowsChange = useCallback(
+    (changes: TypedFlowsChange[]) => {
+      const array = toWorkflowChanges(changes, workflow, flows);
       if (array.length) onWorkflowChange(array);
     },
-    [onWorkflowChange, workflow, flow],
+    [onWorkflowChange, workflow, flows],
   );
 
   return (
-    <FlowView
-      flow={flow}
-      onFlowChange={onFlowChange}
+    <FlowsView
+      flows={flows}
+      onFlowsChange={onFlowsChange}
       nodeTypes={nodeTypes}
       edgeTypes={edgeTypes}
     />

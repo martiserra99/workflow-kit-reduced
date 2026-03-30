@@ -5,7 +5,7 @@ import type {
   TypedFlowNode,
   TypedFlowEdge,
   TypedFlowComponent,
-} from "@/shared/kits/workflow/mvc/view/types/flow";
+} from "@/shared/kits/workflow/mvc/view/types/flows";
 
 import type { Options } from "../types";
 

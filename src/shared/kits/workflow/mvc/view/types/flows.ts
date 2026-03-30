@@ -1,14 +1,14 @@
 import type {
-  Flow,
+  Flows,
   FlowNode,
   FlowEdge,
   FlowComponent,
   FlowContainer,
-} from "@/shared/lib/flow";
+} from "@/shared/lib/flows";
 
 import type { NodeEntity, EdgeEntity } from "../entities";
 
-export type TypedFlow = Flow<NodeEntity, EdgeEntity>;
+export type TypedFlows = Flows<NodeEntity, EdgeEntity>;
 export type TypedFlowNode = FlowNode<NodeEntity, EdgeEntity>;
 export type TypedFlowEdge = FlowEdge<NodeEntity, EdgeEntity>;
 export type TypedFlowComponent = FlowComponent<NodeEntity, EdgeEntity>;

@@ -1,4 +1,4 @@
-import type { TypedFlowNode, TypedFlowContainer } from "../types/flow";
+import type { TypedFlowNode, TypedFlowContainer } from "../types/flows";
 
 import type { OnWorkflowChange } from "@/shared/kits/workflow/mvc/model/on-workflow-change";
 

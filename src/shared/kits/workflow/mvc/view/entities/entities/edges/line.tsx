@@ -2,7 +2,7 @@ import type { Edge, EdgeProps } from "@xyflow/react";
 
 import { BaseEdge } from "@xyflow/react";
 
-import { getSmoothStepPath } from "@/shared/lib/flow";
+import { getSmoothStepPath } from "@/shared/lib/flows";
 
 export interface LineEntity {
   type: "line";

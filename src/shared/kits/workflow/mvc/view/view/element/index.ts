@@ -1,7 +1,7 @@
 import { zet } from "@/shared/lib/zet";
 
 import type { ElementFlow } from "@/shared/kits/workflow/mvc/model/workflow";
-import type { TypedFlowNode } from "@/shared/kits/workflow/mvc/view/types/flow";
+import type { TypedFlowNode } from "@/shared/kits/workflow/mvc/view/types/flows";
 
 import type { Options } from "../types";
 

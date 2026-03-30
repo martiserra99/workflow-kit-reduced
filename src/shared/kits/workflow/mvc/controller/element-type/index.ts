@@ -3,7 +3,7 @@ import { zet, type Refine } from "@/shared/lib/zet";
 import type { Workflow } from "@/shared/kits/workflow/mvc/model/workflow";
 import type { WorkflowChange } from "@/shared/kits/workflow/mvc/model/workflow-change";
 
-import type { TypedFlow } from "@/shared/kits/workflow/mvc/view/types/flow";
+import type { TypedFlows } from "@/shared/kits/workflow/mvc/view/types/flows";
 
 import type { ElementTypeChange } from "..";
 
@@ -14,7 +14,7 @@ interface Zet {
   object: ElementTypeChange;
   nested: ["node", "entity"];
   filter: ["meta", "elementType"];
-  params: [Workflow, TypedFlow];
+  params: [Workflow, TypedFlows];
   return: WorkflowChange[];
 }
 
@@ -26,9 +26,9 @@ const dispatch = zet<Zet>(["node", "entity"], ["meta", "elementType"], {
 export function elementTypeChangeToWorkflowChanges(
   change: ElementTypeChange,
   workflow: Workflow,
-  flow: TypedFlow,
+  flows: TypedFlows,
 ): WorkflowChange[] {
-  return dispatch(change, workflow, flow);
+  return dispatch(change, workflow, flows);
 }
 
 export type ActionChange = Refine<{

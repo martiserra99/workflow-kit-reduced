@@ -36,7 +36,7 @@ interface Constants {
       into: number;
     };
   };
-  flow: {
+  flows: {
     config: {
       maxZoom: number;
       minZoom: number;
@@ -82,7 +82,7 @@ export const constants: Constants = {
       into: 40,
     },
   },
-  flow: {
+  flows: {
     config: {
       maxZoom: 1,
       minZoom: 0.75,

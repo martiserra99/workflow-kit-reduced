@@ -1,4 +1,4 @@
-export { FlowView } from "./components/flow-view";
+export { FlowsView } from "./components/flows-view";
 
 export { getSmoothStepPath } from "./utils/get-smooth-step-path";
 export { autoLayout } from "./utils/auto-layout";
@@ -7,16 +7,16 @@ export { connect } from "./utils/connect";
 export type { NodeEntity, EdgeEntity } from "./types/entity";
 
 export type {
-  Flow,
+  Flows,
   FlowNode,
   FlowEdge,
   FlowComponent,
   FlowContainer,
-} from "./types/flow";
+} from "./types/flows";
 
 export type {
-  FlowChange,
+  FlowsChange,
   NodeSelectChange,
   NodeDragChange,
   NodeDropChange,
-} from "./types/flow-change";
+} from "./types/flows-change";

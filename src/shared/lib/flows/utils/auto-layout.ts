@@ -1,5 +1,5 @@
-import type { NodeEntity, EdgeEntity } from "@/shared/lib/flow/types/entity";
-import type { FlowNode, FlowEdge } from "@/shared/lib/flow/types/flow";
+import type { NodeEntity, EdgeEntity } from "@/shared/lib/flows/types/entity";
+import type { FlowNode, FlowEdge } from "@/shared/lib/flows/types/flows";
 
 interface DimensionsFlow {
   flow: {

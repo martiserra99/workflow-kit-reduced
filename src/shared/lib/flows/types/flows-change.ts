@@ -1,8 +1,8 @@
 import type { NodeEntity, EdgeEntity } from "./entity";
 
-import type { FlowNode } from "./flow";
+import type { FlowNode } from "./flows";
 
-export type FlowChange<T extends NodeEntity, U extends EdgeEntity> =
+export type FlowsChange<T extends NodeEntity, U extends EdgeEntity> =
   | NodeSelectChange<T, U>
   | NodeDragChange<T, U>
   | NodeDropChange<T, U>;

@@ -1,19 +1,19 @@
 import type { NodePositionChange } from "@xyflow/react";
 
-import type { Flow, FlowNode } from "@/shared/lib/flow/types/flow";
-import type { FlowChange } from "@/shared/lib/flow/types/flow-change";
-import type { NodeEntity, EdgeEntity } from "@/shared/lib/flow/types/entity";
+import type { Flows, FlowNode } from "@/shared/lib/flows/types/flows";
+import type { FlowsChange } from "@/shared/lib/flows/types/flows-change";
+import type { NodeEntity, EdgeEntity } from "@/shared/lib/flows/types/entity";
 
 import type {
   NodeDragChange,
   NodeDropChange,
-} from "@/shared/lib/flow/types/flow-change";
+} from "@/shared/lib/flows/types/flows-change";
 
 export function position<T extends NodeEntity, U extends EdgeEntity>(
   change: NodePositionChange,
-  flow: Flow<T, U>,
-): FlowChange<T, U>[] {
-  const node = flow.nodes.get(change.id)!;
+  flows: Flows<T, U>,
+): FlowsChange<T, U>[] {
+  const node = flows.nodes.get(change.id)!;
   if (change.dragging) {
     const dragChange: NodeDragChange<T, U> = {
       type: "drag",

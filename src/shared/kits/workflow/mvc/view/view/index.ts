@@ -4,15 +4,15 @@ import type { Workflow } from "@/shared/kits/workflow/mvc/model/workflow";
 import type { OnWorkflowChange } from "@/shared/kits/workflow/mvc/model/on-workflow-change";
 
 import type {
-  TypedFlow,
+  TypedFlows,
   TypedFlowNode,
   TypedFlowEdge,
   TypedFlowComponent,
-} from "../types/flow";
+} from "../types/flows";
 
 import type { NodeEntity, EdgeEntity } from "../entities";
 
-import { autoLayout, connect } from "@/shared/lib/flow";
+import { autoLayout, connect } from "@/shared/lib/flows";
 
 import { isSelected } from "./utils";
 
@@ -21,7 +21,7 @@ import { elementView } from "./element";
 export function workflowView(
   workflow: Workflow,
   onWorkflowChange: OnWorkflowChange,
-): TypedFlow {
+): TypedFlows {
   const map = new Map<string, TypedFlowNode>();
 
   const start: TypedFlowComponent = {

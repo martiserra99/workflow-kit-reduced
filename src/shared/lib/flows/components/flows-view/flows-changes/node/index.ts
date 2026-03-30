@@ -1,20 +1,20 @@
 import type { NodeChange } from "@xyflow/react";
 
-import type { Flow } from "@/shared/lib/flow/types/flow";
-import type { FlowChange } from "@/shared/lib/flow/types/flow-change";
-import type { NodeEntity, EdgeEntity } from "@/shared/lib/flow/types/entity";
+import type { Flows } from "@/shared/lib/flows/types/flows";
+import type { FlowsChange } from "@/shared/lib/flows/types/flows-change";
+import type { NodeEntity, EdgeEntity } from "@/shared/lib/flows/types/entity";
 
 import { zet } from "@/shared/lib/zet";
 
 import { select } from "./select";
 import { position } from "./position";
 
-export function nodeChangesToFlowChanges<
+export function nodeChangesToFlowsChanges<
   T extends NodeEntity,
   U extends EdgeEntity,
->(nodeChanges: NodeChange[], flow: Flow<T, U>): FlowChange<T, U>[] {
+>(nodeChanges: NodeChange[], flows: Flows<T, U>): FlowsChange<T, U>[] {
   return nodeChanges.flatMap((nodeChange) =>
-    nodeChangeToFlowChanges(nodeChange, flow),
+    nodeChangeToFlowsChanges(nodeChange, flows),
   );
 }
 
@@ -22,14 +22,14 @@ interface Zet<T extends NodeEntity, U extends EdgeEntity> {
   object: NodeChange;
   nested: [];
   filter: ["type"];
-  params: [Flow<T, U>];
-  return: FlowChange<T, U>[];
+  params: [Flows<T, U>];
+  return: FlowsChange<T, U>[];
 }
 
-function nodeChangeToFlowChanges<T extends NodeEntity, U extends EdgeEntity>(
+function nodeChangeToFlowsChanges<T extends NodeEntity, U extends EdgeEntity>(
   nodeChange: NodeChange,
-  flow: Flow<T, U>,
-): FlowChange<T, U>[] {
+  flows: Flows<T, U>,
+): FlowsChange<T, U>[] {
   return zet<Zet<T, U>>([], ["type"], {
     add: () => [],
     dimensions: () => [],
@@ -37,5 +37,5 @@ function nodeChangeToFlowChanges<T extends NodeEntity, U extends EdgeEntity>(
     remove: () => [],
     replace: () => [],
     select: select,
-  })(nodeChange, flow);
+  })(nodeChange, flows);
 }

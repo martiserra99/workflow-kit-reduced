@@ -1,4 +1,4 @@
-import type { FlowNode, FlowEdge } from "../types/flow";
+import type { FlowNode, FlowEdge } from "../types/flows";
 import type { NodeEntity, EdgeEntity } from "../types/entity";
 
 /**

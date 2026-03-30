@@ -1,12 +1,12 @@
 import type { Node, Edge } from "@xyflow/react";
 
 import type {
-  Flow,
+  Flows,
   FlowNode,
   FlowEdge,
   FlowComponent,
   FlowContainer,
-} from "../../types/flow";
+} from "../../types/flows";
 
 import type { NodeEntity, EdgeEntity } from "../../types/entity";
 import type { Dimensions } from "./dimensions";
@@ -14,32 +14,32 @@ import type { Dimensions } from "./dimensions";
 import { useMemo } from "react";
 
 export function useNodesEdges<T extends NodeEntity, U extends EdgeEntity>(
-  flow: Flow<T, U>,
+  flows: Flows<T, U>,
   dimensions: Dimensions,
 ): [Node[], Edge[]] {
   return useMemo(
-    () => toNodesEdges<T, U>(flow, dimensions),
-    [flow, dimensions],
+    () => toNodesEdges<T, U>(flows, dimensions),
+    [flows, dimensions],
   );
 }
 
 function toNodesEdges<T extends NodeEntity, U extends EdgeEntity>(
-  flow: Flow<T, U>,
+  flows: Flows<T, U>,
   dimensions: Dimensions,
 ): [Node[], Edge[]] {
   const nodes: Node[] = [];
   const edges: Edge[] = [];
-  insertNodesEdges(flow, dimensions, nodes, edges);
+  insertNodesEdges(flows, dimensions, nodes, edges);
   return [nodes, edges];
 }
 
 function insertNodesEdges(
-  flow: Flow<NodeEntity, EdgeEntity>,
+  flows: Flows<NodeEntity, EdgeEntity>,
   dimensions: Dimensions,
   nodes: Node[],
   edges: Edge[],
 ) {
-  for (const root of flow.roots) {
+  for (const root of flows.roots) {
     insertFlowNodesEdges(root, dimensions, nodes, edges);
   }
 }

@@ -2,8 +2,8 @@
 
 import type { NodeChange, EdgeChange, ReactFlowProps } from "@xyflow/react";
 
-import type { Flow } from "../../types/flow";
-import type { FlowChange } from "../../types/flow-change";
+import type { Flows } from "../../types/flows";
+import type { FlowsChange } from "../../types/flows-change";
 import type { NodeEntity, EdgeEntity } from "../../types/entity";
 import type { Dimensions, DimensionsChange } from "./dimensions";
 
@@ -12,8 +12,8 @@ import { ReactFlow, Background, BackgroundVariant } from "@xyflow/react";
 
 import { useNodesEdges } from "./use-nodes-edges";
 
-import { nodeChangesToFlowChanges } from "./flow-changes/node";
-import { edgeChangesToFlowChanges } from "./flow-changes/edge";
+import { nodeChangesToFlowsChanges } from "./flows-changes/node";
+import { edgeChangesToFlowsChanges } from "./flows-changes/edge";
 
 import {
   nodeChangesToDimensionsChanges,
@@ -22,22 +22,22 @@ import {
 
 import { constants } from "@/constants";
 
-interface FlowViewProps<T extends NodeEntity, U extends EdgeEntity>
+interface FlowsViewProps<T extends NodeEntity, U extends EdgeEntity>
   extends ReactFlowProps {
-  flow: Flow<T, U>;
-  onFlowChange: (changes: FlowChange<T, U>[]) => void;
+  flows: Flows<T, U>;
+  onFlowsChange: (changes: FlowsChange<T, U>[]) => void;
 }
 
-export function FlowView<T extends NodeEntity, U extends EdgeEntity>({
-  flow,
-  onFlowChange,
+export function FlowsView<T extends NodeEntity, U extends EdgeEntity>({
+  flows,
+  onFlowsChange,
   nodeTypes,
   edgeTypes,
   children,
   ...props
-}: FlowViewProps<T, U>) {
+}: FlowsViewProps<T, U>) {
   const [dimensions, setDimensions] = useState<Dimensions>({});
-  const [nodes, edges] = useNodesEdges(flow, dimensions);
+  const [nodes, edges] = useNodesEdges(flows, dimensions);
 
   const onDimensionsChange = useCallback((changes: DimensionsChange[]) => {
     setDimensions((dimensions) => applyDimensionsChanges(changes, dimensions));
@@ -45,20 +45,20 @@ export function FlowView<T extends NodeEntity, U extends EdgeEntity>({
 
   const onNodesChange = useCallback(
     (changes: NodeChange[]) => {
-      const flowChanges = nodeChangesToFlowChanges(changes, flow);
+      const flowChanges = nodeChangesToFlowsChanges(changes, flows);
       const dimensionsChanges = nodeChangesToDimensionsChanges(changes);
-      if (flowChanges.length) onFlowChange(flowChanges);
+      if (flowChanges.length) onFlowsChange(flowChanges);
       if (dimensionsChanges.length) onDimensionsChange(dimensionsChanges);
     },
-    [flow, onFlowChange, onDimensionsChange],
+    [flows, onFlowsChange, onDimensionsChange],
   );
 
   const onEdgesChange = useCallback(
     (changes: EdgeChange[]) => {
-      const flowChanges = edgeChangesToFlowChanges(changes, flow);
-      if (flowChanges.length) onFlowChange(flowChanges);
+      const flowChanges = edgeChangesToFlowsChanges(changes, flows);
+      if (flowChanges.length) onFlowsChange(flowChanges);
     },
-    [flow, onFlowChange],
+    [flows, onFlowsChange],
   );
 
   return (
@@ -70,8 +70,8 @@ export function FlowView<T extends NodeEntity, U extends EdgeEntity>({
       nodeTypes={nodeTypes}
       edgeTypes={edgeTypes}
       fitView={true}
-      maxZoom={constants.flow.config.maxZoom}
-      minZoom={constants.flow.config.minZoom}
+      maxZoom={constants.flows.config.maxZoom}
+      minZoom={constants.flows.config.minZoom}
       panOnScroll={true}
       selectionKeyCode={null}
       multiSelectionKeyCode={null}

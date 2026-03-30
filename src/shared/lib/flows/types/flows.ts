@@ -1,6 +1,6 @@
 import type { NodeEntity, EdgeEntity } from "./entity";
 
-export interface Flow<T extends NodeEntity, U extends EdgeEntity> {
+export interface Flows<T extends NodeEntity, U extends EdgeEntity> {
   roots: FlowNode<T, U>[];
   nodes: Map<string, FlowNode<T, U>>;
 }
