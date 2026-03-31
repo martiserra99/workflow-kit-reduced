@@ -1,6 +1,6 @@
 # Workflow Kit (Reduced Version)
 
-A simplified version of Workflow Kit used as the reference codebase for the docs.
+A simplified version of Workflow Kit that lets you explore the codebase before purchasing the full version.
 
 ---
 
