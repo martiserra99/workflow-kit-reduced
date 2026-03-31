@@ -35,7 +35,7 @@ interface Size {
  * Also updates the size of container nodes based on their children.
  *
  * For a deeper understanding of the algorithm, see:
- * https://www.martiserra.me/projects/formity/the-node-layout-algorithm-behind-formity-ui
+ * https://www.workflowkit.app/blog/articles/react-flow-auto-layout
  */
 export function autoLayout<T extends NodeEntity, U extends EdgeEntity>(
   root: FlowNode<T, U>,
