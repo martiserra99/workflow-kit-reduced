@@ -12,6 +12,22 @@ This is the same system powering **Formity UI**, and it has been **featured on t
 
 ---
 
+## 🛠️ Getting Started
+
+Install dependencies:
+
+```bash
+pnpm install
+```
+
+Run the project:
+
+```bash
+pnpm run dev
+```
+
+---
+
 ## ✨ Features
 
 ### React Flow, Made Simpler

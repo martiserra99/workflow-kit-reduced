@@ -23,17 +23,9 @@ Licensor grants Licensee a **non-exclusive, non-transferable, non-sublicensable*
 - Permits **one person** to access and use the Software.
 - For solo developers or individual founders.
 
-#### **Small Team License**
-
-- Permits **up to 5 people** within the same organization to access and use the Software.
-
 #### **Team License**
 
 - Permits **up to 25 people** within the same organization to access and use the Software.
-
-#### **Enterprise License**
-
-- Permits **more than 25 people** within the same organization.
 
 > **Important:**  
 > Seat limits refer to the number of individuals who access or use the Software or its source code — not the total number of employees in the organization.
