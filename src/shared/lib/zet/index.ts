@@ -46,7 +46,7 @@ type Handlers<
  * Creates a function that selects the right handler for an object based on a specific nested value inside it.
  *
  * For full documentation, see:
- * https://www.workflowkit.app/getting-started/utilities/type-based-execution
+ * https://www.workflowkit.app/getting-started/utilities/selecting-handlers-by-type
  *
  * @template T An object containing:
  *   - `object`: The input object.
