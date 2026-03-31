@@ -22,8 +22,10 @@ import {
 
 import { constants } from "@/constants";
 
-interface FlowsViewProps<T extends NodeEntity, U extends EdgeEntity>
-  extends ReactFlowProps {
+interface FlowsViewProps<
+  T extends NodeEntity,
+  U extends EdgeEntity,
+> extends ReactFlowProps {
   flows: Flows<T, U>;
   onFlowsChange: (changes: FlowsChange<T, U>[]) => void;
 }

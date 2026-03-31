@@ -9,13 +9,13 @@ A simplified version of Workflow Kit that lets you explore the codebase before p
 Install dependencies:
 
 ```bash
-pnpm install
+npm install
 ```
 
 Run the project:
 
 ```bash
-pnpm run dev
+npm run dev
 ```
 
 ---
