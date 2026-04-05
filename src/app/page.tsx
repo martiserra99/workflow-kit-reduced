@@ -9,7 +9,7 @@ import {
   applyWorkflowChanges,
 } from "@/shared/kits/workflow";
 
-export function initialWorkflow(): Workflow {
+function initialWorkflow(): Workflow {
   return {
     flow: {
       start: { message: "" },
