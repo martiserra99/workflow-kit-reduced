@@ -10,7 +10,7 @@ export interface LabelElseEntity {
     item: "labelElse";
     id: string;
   };
-  data: { [key: string]: never };
+  data: Record<never, never>;
 }
 
 export default function LabelElse() {

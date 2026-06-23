@@ -71,6 +71,7 @@ export function FlowsView<T extends NodeEntity, U extends EdgeEntity>({
       onEdgesChange={onEdgesChange}
       nodeTypes={nodeTypes}
       edgeTypes={edgeTypes}
+      style={{ background: "var(--color-gray-50)" }}
       fitView={true}
       maxZoom={constants.flows.config.maxZoom}
       minZoom={constants.flows.config.minZoom}
@@ -85,8 +86,10 @@ export function FlowsView<T extends NodeEntity, U extends EdgeEntity>({
     >
       {children}
       <Background
-        color="var(--color-neutral-700)"
         variant={BackgroundVariant.Dots}
+        color="var(--color-gray-300)"
+        size={1.5}
+        gap={10}
       />
     </ReactFlow>
   );

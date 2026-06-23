@@ -10,7 +10,7 @@ export interface LabelThenEntity {
     item: "labelThen";
     id: string;
   };
-  data: { [key: string]: never };
+  data: Record<never, never>;
 }
 
 export default function LabelThen() {

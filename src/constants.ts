@@ -35,11 +35,24 @@ interface Constants {
       next: number;
       into: number;
     };
+    drop: number; // The maximum distance a dragged node can be from a drop area node to be considered inside it.
   };
   flows: {
     config: {
       maxZoom: number;
       minZoom: number;
+    };
+    center: {
+      zoom: number; // Zoom level to apply when centering on a node.
+      duration: number; // Animation duration for centering the viewport on a node.
+    };
+    controls: {
+      zoom: {
+        duration: number;
+      };
+      fitView: {
+        duration: number;
+      };
     };
   };
 }
@@ -81,11 +94,24 @@ export const constants: Constants = {
       next: 40,
       into: 40,
     },
+    drop: 160,
   },
   flows: {
     config: {
       maxZoom: 1,
       minZoom: 0.75,
+    },
+    center: {
+      zoom: 1,
+      duration: 1000,
+    },
+    controls: {
+      zoom: {
+        duration: 500,
+      },
+      fitView: {
+        duration: 1000,
+      },
     },
   },
 };

@@ -1,21 +1,19 @@
-import type { ReactNode, ComponentPropsWithoutRef } from "react";
-
 import { cn } from "@/shared/lib/cn";
 
 export default function Label({
   className,
   children,
   ...props
-}: ComponentPropsWithoutRef<"div">): ReactNode {
+}: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        "flex h-8 w-20 items-center justify-center rounded-lg border border-neutral-700 bg-neutral-900",
+        "flex h-7 w-20 items-center justify-center rounded-xl border border-gray-200 bg-white ring-4 ring-gray-100",
         className,
       )}
       {...props}
     >
-      <p className="text-sm font-semibold text-white">{children}</p>
+      <p className="text-xs font-semibold text-gray-950">{children}</p>
     </div>
   );
 }

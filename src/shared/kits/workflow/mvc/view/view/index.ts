@@ -148,7 +148,7 @@ export function workflowView(
       id: `${top.id}-${bottom.id}`,
       entity: {
         type: "line",
-        data: {},
+        data: { drag: false },
       },
       length: constants.workflow.edge.sm,
       source: top,

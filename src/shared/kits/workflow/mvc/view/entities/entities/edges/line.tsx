@@ -6,7 +6,7 @@ import { getSmoothStepPath } from "@/shared/lib/flows";
 
 export interface LineEntity {
   type: "line";
-  data: { [key: string]: never };
+  data: Record<never, never>;
 }
 
 export default function Line({
@@ -26,17 +26,15 @@ export default function Line({
     radius: 12,
   });
   return (
-    <>
-      <BaseEdge
-        id={id}
-        path={path}
-        style={{
-          ...style,
-          stroke: "var(--color-neutral-700",
-          strokeWidth: 1,
-          strokeOpacity: 1,
-        }}
-      />
-    </>
+    <BaseEdge
+      id={id}
+      path={path}
+      style={{
+        ...style,
+        stroke: `var(--color-gray-300)`,
+        strokeWidth: 1,
+        strokeOpacity: 1,
+      }}
+    />
   );
 }

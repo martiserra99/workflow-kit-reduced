@@ -1,6 +1,4 @@
-import type { ComponentPropsWithoutRef } from "react";
-
-export function ActionIcon(props: ComponentPropsWithoutRef<"svg">) {
+export function ActionIcon(props: React.ComponentProps<"svg">) {
   return (
     <svg
       width="16"

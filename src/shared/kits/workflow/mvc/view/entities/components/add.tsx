@@ -1,15 +1,15 @@
-import type { ReactNode, ComponentPropsWithoutRef } from "react";
-
 import { PlusIcon } from "lucide-react";
 import { cva } from "class-variance-authority";
 
 import { cn } from "@/shared/lib/cn";
 
 const addVariants = cva(
-  "flex size-8 items-center justify-center rounded-lg border border-neutral-700 bg-neutral-900 transition-colors hover:border-neutral-500",
+  "flex size-8 items-center justify-center rounded-xl border border-gray-200 bg-white ring-4 ring-gray-100 transition-colors hover:border-gray-300",
   {
     variants: {
-      selected: { true: "border-blue-500 hover:border-blue-500" },
+      selected: {
+        true: "border-emerald-500 ring-emerald-100 hover:border-emerald-500",
+      },
     },
     defaultVariants: {
       selected: false,
@@ -17,18 +17,14 @@ const addVariants = cva(
   },
 );
 
-interface AddProps extends ComponentPropsWithoutRef<"div"> {
+interface AddProps extends React.ComponentProps<"div"> {
   selected: boolean;
 }
 
-export default function Add({
-  selected,
-  className,
-  ...props
-}: AddProps): ReactNode {
+export default function Add({ selected, className, ...props }: AddProps) {
   return (
     <div className={cn(addVariants({ selected }), className)} {...props}>
-      <PlusIcon className="size-5 stroke-white" />
+      <PlusIcon className="size-4 stroke-gray-500" />
     </div>
   );
 }

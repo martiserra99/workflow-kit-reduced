@@ -10,7 +10,7 @@ export interface AddThenEntity {
     item: "addThen";
     id: string;
   };
-  data: { [key: string]: never };
+  data: Record<never, never>;
 }
 
 export default function AddThen({

@@ -1,6 +1,10 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@import "./prism.css";
 @import "./xyflow.css";
 
 @theme inline {
-  --font-sans: var(--font-nunito-sans), sans-serif;
+  --font-sans: var(--font-dm-sans), sans-serif;
+  --font-mono: var(--font-dm-mono), monospace;
 }

@@ -1,6 +1,4 @@
-import type { ComponentPropsWithoutRef } from "react";
-
-export function ConditionIcon(props: ComponentPropsWithoutRef<"svg">) {
+export function ConditionIcon(props: React.ComponentProps<"svg">) {
   return (
     <svg
       width="16"

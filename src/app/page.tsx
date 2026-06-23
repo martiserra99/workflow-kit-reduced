@@ -1,12 +1,12 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useState, useCallback } from "react";
 
 import {
   WorkflowView,
-  Workflow,
-  WorkflowChange,
   applyWorkflowChanges,
+  type Workflow,
+  type WorkflowChange,
 } from "@/shared/kits/workflow";
 
 function initialWorkflow(): Workflow {
@@ -48,7 +48,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex h-screen flex-col bg-neutral-900">
+    <div className="flex h-screen flex-col bg-white">
       <WorkflowView workflow={workflow} onWorkflowChange={onWorkflowChange} />
     </div>
   );

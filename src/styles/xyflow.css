@@ -4,3 +4,19 @@
   opacity: 0;
   z-index: -1;
 }
+
+.react-flow__node:not(:has(.drag)) {
+  z-index: 0 !important;
+}
+
+.react-flow__node:has(.drag) {
+  z-index: 20 !important;
+}
+
+.react-flow__edges > svg:not(:has(.drag)) {
+  z-index: 0 !important;
+}
+
+.react-flow__edges > svg:has(.drag) {
+  z-index: 20 !important;
+}

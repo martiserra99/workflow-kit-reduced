@@ -1,16 +1,14 @@
-import type { ReactNode, ComponentPropsWithoutRef, ComponentType } from "react";
-
 import { XIcon } from "lucide-react";
 import { cva } from "class-variance-authority";
 
 import { cn } from "@/shared/lib/cn";
 
 const blockVariants = cva(
-  "box-border w-80 rounded-xl border border-neutral-700 bg-neutral-900 px-3 transition-colors hover:border-neutral-500",
+  "w-80 rounded-xl border border-gray-200 bg-white px-3 ring-4 ring-gray-100 transition-colors hover:border-gray-300",
   {
     variants: {
       selected: {
-        true: "border-blue-500 hover:border-blue-500",
+        true: "border-emerald-400 ring-emerald-100 hover:border-emerald-400",
       },
     },
     defaultVariants: {
@@ -19,88 +17,67 @@ const blockVariants = cva(
   },
 );
 
-interface BlockProps extends ComponentPropsWithoutRef<"div"> {
+interface BlockProps extends React.ComponentProps<"div"> {
   selected: boolean;
 }
 
-export default function Block({
-  selected,
-  className,
-  ...props
-}: BlockProps): ReactNode {
+function Block({ selected, className, ...props }: BlockProps) {
   return (
     <div className={cn(blockVariants({ selected }), className)} {...props} />
   );
 }
 
-function Header({
-  className,
-  ...props
-}: ComponentPropsWithoutRef<"div">): ReactNode {
+function Header({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div className={cn("flex h-10 items-center gap-2", className)} {...props} />
+  );
+}
+
+function IconName({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn("flex h-10 items-center justify-between gap-2", className)}
+      className={cn("flex min-w-0 items-center gap-2", className)}
       {...props}
     />
   );
 }
 
-Block.Header = Header;
-
-function IconName({
-  className,
-  ...props
-}: ComponentPropsWithoutRef<"div">): ReactNode {
-  return (
-    <div className={cn("flex items-center gap-2", className)} {...props} />
-  );
+interface IconProps extends React.ComponentProps<"div"> {
+  icon: React.ComponentType<React.ComponentProps<"svg">>;
 }
 
-Block.IconName = IconName;
-
-interface IconProps extends ComponentPropsWithoutRef<"div"> {
-  icon: ComponentType<ComponentPropsWithoutRef<"svg">>;
-}
-
-function Icon({ icon: Component, className, ...props }: IconProps): ReactNode {
+function Icon({ icon: Component, className, ...props }: IconProps) {
   return (
     <div
       className={cn(
-        "flex size-5 items-center justify-center rounded-md border border-neutral-700 bg-neutral-800",
+        "flex size-5 shrink-0 items-center justify-center rounded-md border border-gray-200 bg-gray-100",
         className,
       )}
       {...props}
     >
-      <Component className="size-3 stroke-white" />
+      <Component className="size-3 stroke-gray-500" />
     </div>
   );
 }
 
-Block.Icon = Icon;
-
-function Name({
-  className,
-  ...props
-}: ComponentPropsWithoutRef<"p">): ReactNode {
+function Name({ className, ...props }: React.ComponentProps<"p">) {
   return (
     <p
-      className={cn("font-sans text-sm font-semibold text-white", className)}
+      className={cn("truncate text-sm font-semibold text-gray-900", className)}
       {...props}
     />
   );
 }
 
-Block.Name = Name;
-
-interface DeleteProps extends ComponentPropsWithoutRef<"button"> {
+interface DeleteProps extends React.ComponentProps<"button"> {
   onRemove: () => void;
 }
 
-function Delete({ onRemove, className, ...props }: DeleteProps): ReactNode {
+function Delete({ onRemove, className, ...props }: DeleteProps) {
   return (
     <button
       className={cn(
-        "flex size-5 items-center justify-center rounded-md border border-neutral-700 bg-neutral-800 transition-colors hover:border-neutral-500 focus:border-neutral-300 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none",
+        "ml-auto flex size-5 shrink-0 items-center justify-center rounded-md border border-gray-200 bg-gray-100 transition-colors hover:bg-gray-200 focus:ring-2 focus:ring-gray-300 focus:outline-none",
         className,
       )}
       onClick={(e) => {
@@ -109,20 +86,18 @@ function Delete({ onRemove, className, ...props }: DeleteProps): ReactNode {
       }}
       {...props}
     >
-      <XIcon className="size-3 stroke-white" />
+      <XIcon className="size-3 stroke-gray-400" />
     </button>
   );
 }
 
-Block.Delete = Delete;
-
 const contentVariants = cva(
-  "box-border flex h-9 items-center border-t border-t-neutral-800",
+  "flex h-9 items-center border-t border-t-gray-200",
   {
     variants: {
       children: {
-        true: "text-neutral-300",
-        false: "text-neutral-500",
+        true: "text-gray-500",
+        false: "text-gray-400",
       },
     },
     defaultVariants: {
@@ -131,10 +106,7 @@ const contentVariants = cva(
   },
 );
 
-function Content({
-  children,
-  className,
-}: ComponentPropsWithoutRef<"div">): ReactNode {
+function Content({ children, className }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
@@ -142,11 +114,18 @@ function Content({
         className,
       )}
     >
-      <p className="overflow-hidden font-sans text-xs font-semibold text-nowrap text-ellipsis">
+      <p className="overflow-hidden text-xs font-medium text-nowrap text-ellipsis">
         {children ? children : "There is no text"}
       </p>
     </div>
   );
 }
 
-Block.Content = Content;
+export default Object.assign(Block, {
+  Header,
+  IconName,
+  Icon,
+  Name,
+  Delete,
+  Content,
+});
